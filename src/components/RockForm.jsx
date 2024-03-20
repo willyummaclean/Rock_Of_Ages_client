@@ -5,7 +5,7 @@ export const RockForm = ({ fetchRocks }) => {
     const initialRockState = {
         name: "",
         weight: 0,
-        typeId: 0
+        type: 0
     }
 
     const [types, changeTypes] = useState([{ id: 1, label: "Igneous" }, { id: 2, label: "Volcanic" }])
@@ -64,7 +64,7 @@ export const RockForm = ({ fetchRocks }) => {
                         <input id="weight" type="number"
                             onChange={e => {
                                 const copy = { ...rock }
-                                copy.weight = e.target.value
+                                copy.weight = parseFloat(e.target.value)
                                 updateRockProps(copy)
                             }}
                             value={rock.weight} className="form-control" />
@@ -75,7 +75,7 @@ export const RockForm = ({ fetchRocks }) => {
                         <select id="type" className="form-control"
                             onChange={e => {
                                 const copy = { ...rock }
-                                copy.type_id = parseInt(e.target.value)
+                                copy.type = parseInt(e.target.value)
                                 updateRockProps(copy)
                             }}>
                             <option value={0}>- Select a type -</option>
